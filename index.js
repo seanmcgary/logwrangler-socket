@@ -1,1 +1,1 @@
-module.exports = require('./lib/logwrangler-tcp');
+module.exports = require('./lib');

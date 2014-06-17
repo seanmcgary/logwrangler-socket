@@ -1,17 +1,19 @@
-var logwranglerTcp = require('../index');
+var logwranglerSocket = require('../index');
 
-require('./testServer');
+//require('./testServer');
 
 var options = {
 	host: 'localhost',
-	port: 9998
+	port: 9999
 };
 
-var handler = new logwranglerTcp(options);
-
+var handler = new logwranglerSocket.tcp(options);
 setTimeout(function(){
-
-	handler({ test: 'foo' }, { data: 'bar'} );
+	var counter = 0;
+	setInterval(function(){
+		counter++;
+		handler({ test: 'foo' }, { data: counter } );
+	}, 100);
 
 }, 2000);
 
